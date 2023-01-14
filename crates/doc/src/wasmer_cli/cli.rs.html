@@ -1,11 +1,12 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `lib/cli/src/cli.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>cli.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><script defer src="../../main.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script>
-    <noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="icon" href="https://wasmer.io/images/icons/favicon-32x32.png"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../wasmer_cli/index.html"><div class="logo-container"><img src="https://github.com/wasmerio.png?size=200" alt="logo"></div>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `lib/cli/src/cli.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>cli.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="icon" href="https://wasmer.io/images/icons/favicon-32x32.png"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../wasmer_cli/index.html"><div class="logo-container"><img src="https://github.com/wasmerio.png?size=200" alt="logo"></div>
         </a><h2 class="location"></h2>
     </nav>
     <nav class="sidebar"><a class="sidebar-logo" href="../../wasmer_cli/index.html"><div class="logo-container">
                     <img src="https://github.com/wasmerio.png?size=200" alt="logo"></div>
         </a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../wasmer_cli/index.html">
-                        <img src="https://github.com/wasmerio.png?size=200" alt="logo"></a><nav class="sub"><div class="theme-picker hidden"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="22" height="22" alt="Pick another theme!" src="../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+                        <img src="https://github.com/wasmerio.png?size=200" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><button type="button" id="help-button" title="help">?</button><div id="settings-menu" tabindex="-1">
+                                <a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div>
+                        </div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -213,6 +214,99 @@
 <span id="206">206</span>
 <span id="207">207</span>
 <span id="208">208</span>
+<span id="209">209</span>
+<span id="210">210</span>
+<span id="211">211</span>
+<span id="212">212</span>
+<span id="213">213</span>
+<span id="214">214</span>
+<span id="215">215</span>
+<span id="216">216</span>
+<span id="217">217</span>
+<span id="218">218</span>
+<span id="219">219</span>
+<span id="220">220</span>
+<span id="221">221</span>
+<span id="222">222</span>
+<span id="223">223</span>
+<span id="224">224</span>
+<span id="225">225</span>
+<span id="226">226</span>
+<span id="227">227</span>
+<span id="228">228</span>
+<span id="229">229</span>
+<span id="230">230</span>
+<span id="231">231</span>
+<span id="232">232</span>
+<span id="233">233</span>
+<span id="234">234</span>
+<span id="235">235</span>
+<span id="236">236</span>
+<span id="237">237</span>
+<span id="238">238</span>
+<span id="239">239</span>
+<span id="240">240</span>
+<span id="241">241</span>
+<span id="242">242</span>
+<span id="243">243</span>
+<span id="244">244</span>
+<span id="245">245</span>
+<span id="246">246</span>
+<span id="247">247</span>
+<span id="248">248</span>
+<span id="249">249</span>
+<span id="250">250</span>
+<span id="251">251</span>
+<span id="252">252</span>
+<span id="253">253</span>
+<span id="254">254</span>
+<span id="255">255</span>
+<span id="256">256</span>
+<span id="257">257</span>
+<span id="258">258</span>
+<span id="259">259</span>
+<span id="260">260</span>
+<span id="261">261</span>
+<span id="262">262</span>
+<span id="263">263</span>
+<span id="264">264</span>
+<span id="265">265</span>
+<span id="266">266</span>
+<span id="267">267</span>
+<span id="268">268</span>
+<span id="269">269</span>
+<span id="270">270</span>
+<span id="271">271</span>
+<span id="272">272</span>
+<span id="273">273</span>
+<span id="274">274</span>
+<span id="275">275</span>
+<span id="276">276</span>
+<span id="277">277</span>
+<span id="278">278</span>
+<span id="279">279</span>
+<span id="280">280</span>
+<span id="281">281</span>
+<span id="282">282</span>
+<span id="283">283</span>
+<span id="284">284</span>
+<span id="285">285</span>
+<span id="286">286</span>
+<span id="287">287</span>
+<span id="288">288</span>
+<span id="289">289</span>
+<span id="290">290</span>
+<span id="291">291</span>
+<span id="292">292</span>
+<span id="293">293</span>
+<span id="294">294</span>
+<span id="295">295</span>
+<span id="296">296</span>
+<span id="297">297</span>
+<span id="298">298</span>
+<span id="299">299</span>
+<span id="300">300</span>
+<span id="301">301</span>
 </pre><pre class="rust"><code><span class="doccomment">//! The logic for the Wasmer CLI tool.</span>
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;linux&quot;</span>)]</span>
@@ -225,13 +319,14 @@
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::commands::CreateObj</span>;
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;wast&quot;</span>)]</span>
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::commands::Wast</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::commands</span>::{<span class="ident">Cache</span>, <span class="ident">Config</span>, <span class="ident">Inspect</span>, <span class="ident">Run</span>, <span class="ident">SelfUpdate</span>, <span class="ident">Validate</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::commands</span>::{
+    <span class="ident">Add</span>, <span class="ident">Cache</span>, <span class="ident">Config</span>, <span class="ident">GenCHeader</span>, <span class="ident">Init</span>, <span class="ident">Inspect</span>, <span class="ident">List</span>, <span class="ident">Login</span>, <span class="ident">Publish</span>, <span class="ident">Run</span>, <span class="ident">SelfUpdate</span>, <span class="ident">Validate</span>,
+    <span class="ident">Whoami</span>,
+};
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::error::PrettyError</span>;
-<span class="kw">use</span> <span class="ident">anyhow::Result</span>;
+<span class="kw">use</span> <span class="ident">clap</span>::{<span class="ident">CommandFactory</span>, <span class="ident">ErrorKind</span>, <span class="ident">Parser</span>};
 
-<span class="kw">use</span> <span class="ident">clap</span>::{<span class="ident">ErrorKind</span>, <span class="ident">Parser</span>};
-
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Parser</span>)]</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Parser</span>, <span class="ident">Debug</span>)]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(
     <span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;headless&quot;</span>),
     <span class="ident">clap</span>(
@@ -252,21 +347,28 @@
 )]</span>
 <span class="doccomment">/// The options for the wasmer Command Line Interface</span>
 <span class="kw">enum</span> <span class="ident">WasmerCLIOptions</span> {
+    <span class="doccomment">/// List all locally installed packages</span>
+    <span class="ident">List</span>(<span class="ident">List</span>),
+
     <span class="doccomment">/// Run a WebAssembly file. Formats accepted: wasm, wat</span>
-    <span class="attribute">#[<span class="ident">clap</span>(<span class="ident">name</span> <span class="op">=</span> <span class="string">&quot;run&quot;</span>)]</span>
     <span class="ident">Run</span>(<span class="ident">Run</span>),
 
+    <span class="doccomment">/// Login into a wapm.io-like registry</span>
+    <span class="ident">Login</span>(<span class="ident">Login</span>),
+
+    <span class="doccomment">/// Login into a wapm.io-like registry</span>
+    <span class="attribute">#[<span class="ident">clap</span>(<span class="ident">name</span> <span class="op">=</span> <span class="string">&quot;publish&quot;</span>)]</span>
+    <span class="ident">Publish</span>(<span class="ident">Publish</span>),
+
     <span class="doccomment">/// Wasmer cache</span>
-    <span class="attribute">#[<span class="ident">clap</span>(<span class="ident">subcommand</span>, <span class="ident">name</span> <span class="op">=</span> <span class="string">&quot;cache&quot;</span>)]</span>
+    <span class="attribute">#[<span class="ident">clap</span>(<span class="ident">subcommand</span>)]</span>
     <span class="ident">Cache</span>(<span class="ident">Cache</span>),
 
     <span class="doccomment">/// Validate a WebAssembly binary</span>
-    <span class="attribute">#[<span class="ident">clap</span>(<span class="ident">name</span> <span class="op">=</span> <span class="string">&quot;validate&quot;</span>)]</span>
     <span class="ident">Validate</span>(<span class="ident">Validate</span>),
 
     <span class="doccomment">/// Compile a WebAssembly binary</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;compiler&quot;</span>)]</span>
-    <span class="attribute">#[<span class="ident">clap</span>(<span class="ident">name</span> <span class="op">=</span> <span class="string">&quot;compile&quot;</span>)]</span>
     <span class="ident">Compile</span>(<span class="ident">Compile</span>),
 
     <span class="doccomment">/// Compile a WebAssembly binary into a native executable</span>
@@ -336,9 +438,11 @@
     <span class="attribute">#[<span class="ident">structopt</span>(<span class="ident">name</span> <span class="op">=</span> <span class="string">&quot;create-obj&quot;</span>, <span class="ident">verbatim_doc_comment</span>)]</span>
     <span class="ident">CreateObj</span>(<span class="ident">CreateObj</span>),
 
+    <span class="doccomment">/// Generate the C static_defs.h header file for the input .wasm module</span>
+    <span class="ident">GenCHeader</span>(<span class="ident">GenCHeader</span>),
+
     <span class="doccomment">/// Get various configuration information needed</span>
     <span class="doccomment">/// to compile programs which use Wasmer</span>
-    <span class="attribute">#[<span class="ident">clap</span>(<span class="ident">name</span> <span class="op">=</span> <span class="string">&quot;config&quot;</span>)]</span>
     <span class="ident">Config</span>(<span class="ident">Config</span>),
 
     <span class="doccomment">/// Update wasmer to the latest version</span>
@@ -346,22 +450,29 @@
     <span class="ident">SelfUpdate</span>(<span class="ident">SelfUpdate</span>),
 
     <span class="doccomment">/// Inspect a WebAssembly file</span>
-    <span class="attribute">#[<span class="ident">clap</span>(<span class="ident">name</span> <span class="op">=</span> <span class="string">&quot;inspect&quot;</span>)]</span>
     <span class="ident">Inspect</span>(<span class="ident">Inspect</span>),
+
+    <span class="doccomment">/// Initializes a new wasmer.toml file</span>
+    <span class="attribute">#[<span class="ident">clap</span>(<span class="ident">name</span> <span class="op">=</span> <span class="string">&quot;init&quot;</span>)]</span>
+    <span class="ident">Init</span>(<span class="ident">Init</span>),
 
     <span class="doccomment">/// Run spec testsuite</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;wast&quot;</span>)]</span>
-    <span class="attribute">#[<span class="ident">clap</span>(<span class="ident">name</span> <span class="op">=</span> <span class="string">&quot;wast&quot;</span>)]</span>
     <span class="ident">Wast</span>(<span class="ident">Wast</span>),
 
     <span class="doccomment">/// Unregister and/or register wasmer as binfmt interpreter</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;linux&quot;</span>)]</span>
-    <span class="attribute">#[<span class="ident">clap</span>(<span class="ident">name</span> <span class="op">=</span> <span class="string">&quot;binfmt&quot;</span>)]</span>
     <span class="ident">Binfmt</span>(<span class="ident">Binfmt</span>),
+
+    <span class="doccomment">/// Shows the current logged in user for the current active registry</span>
+    <span class="ident">Whoami</span>(<span class="ident">Whoami</span>),
+
+    <span class="doccomment">/// Add a WAPM package&#39;s bindings to your application.</span>
+    <span class="ident">Add</span>(<span class="ident">Add</span>),
 }
 
 <span class="kw">impl</span> <span class="ident">WasmerCLIOptions</span> {
-    <span class="kw">fn</span> <span class="ident">execute</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">execute</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">anyhow::Error</span><span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="self">self</span> {
             <span class="ident"><span class="self">Self</span>::Run</span>(<span class="ident">options</span>) =&gt; <span class="ident">options</span>.<span class="ident">execute</span>(),
             <span class="ident"><span class="self">Self</span>::SelfUpdate</span>(<span class="ident">options</span>) =&gt; <span class="ident">options</span>.<span class="ident">execute</span>(),
@@ -375,10 +486,17 @@
             <span class="ident"><span class="self">Self</span>::CreateObj</span>(<span class="ident">create_obj</span>) =&gt; <span class="ident">create_obj</span>.<span class="ident">execute</span>(),
             <span class="ident"><span class="self">Self</span>::Config</span>(<span class="ident">config</span>) =&gt; <span class="ident">config</span>.<span class="ident">execute</span>(),
             <span class="ident"><span class="self">Self</span>::Inspect</span>(<span class="ident">inspect</span>) =&gt; <span class="ident">inspect</span>.<span class="ident">execute</span>(),
+            <span class="ident"><span class="self">Self</span>::Init</span>(<span class="ident">init</span>) =&gt; <span class="ident">init</span>.<span class="ident">execute</span>(),
+            <span class="ident"><span class="self">Self</span>::List</span>(<span class="ident">list</span>) =&gt; <span class="ident">list</span>.<span class="ident">execute</span>(),
+            <span class="ident"><span class="self">Self</span>::Login</span>(<span class="ident">login</span>) =&gt; <span class="ident">login</span>.<span class="ident">execute</span>(),
+            <span class="ident"><span class="self">Self</span>::Publish</span>(<span class="ident">publish</span>) =&gt; <span class="ident">publish</span>.<span class="ident">execute</span>(),
+            <span class="ident"><span class="self">Self</span>::GenCHeader</span>(<span class="ident">gen_heder</span>) =&gt; <span class="ident">gen_heder</span>.<span class="ident">execute</span>(),
             <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;wast&quot;</span>)]</span>
             <span class="ident"><span class="self">Self</span>::Wast</span>(<span class="ident">wast</span>) =&gt; <span class="ident">wast</span>.<span class="ident">execute</span>(),
             <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;linux&quot;</span>)]</span>
             <span class="ident"><span class="self">Self</span>::Binfmt</span>(<span class="ident">binfmt</span>) =&gt; <span class="ident">binfmt</span>.<span class="ident">execute</span>(),
+            <span class="ident"><span class="self">Self</span>::Whoami</span>(<span class="ident">whoami</span>) =&gt; <span class="ident">whoami</span>.<span class="ident">execute</span>(),
+            <span class="ident"><span class="self">Self</span>::Add</span>(<span class="ident">install</span>) =&gt; <span class="ident">install</span>.<span class="ident">execute</span>(),
         }
     }
 }
@@ -389,6 +507,10 @@
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">windows</span>)]</span>
     <span class="ident">colored::control::set_virtual_terminal</span>(<span class="bool-val">true</span>).<span class="ident">unwrap</span>();
 
+    <span class="ident">PrettyError::report</span>(<span class="ident">wasmer_main_inner</span>())
+}
+
+<span class="kw">fn</span> <span class="ident">wasmer_main_inner</span>() -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">anyhow::Error</span><span class="op">&gt;</span> {
     <span class="comment">// We try to run wasmer with the normal arguments.</span>
     <span class="comment">// Eg. `wasmer &lt;SUBCOMMAND&gt;`</span>
     <span class="comment">// In case that fails, we fallback trying the Run subcommand directly.</span>
@@ -398,13 +520,37 @@
     <span class="comment">// we assume that we&#39;re registered via binfmt_misc</span>
     <span class="kw">let</span> <span class="ident">args</span> <span class="op">=</span> <span class="ident">std::env::args</span>().<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span>();
     <span class="kw">let</span> <span class="ident">binpath</span> <span class="op">=</span> <span class="ident">args</span>.<span class="ident">get</span>(<span class="number">0</span>).<span class="ident">map</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span>.<span class="ident">as_ref</span>()).<span class="ident">unwrap_or</span>(<span class="string">&quot;&quot;</span>);
+
+    <span class="kw">let</span> <span class="ident">firstarg</span> <span class="op">=</span> <span class="ident">args</span>.<span class="ident">get</span>(<span class="number">1</span>).<span class="ident">map</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span>.<span class="ident">as_str</span>());
+    <span class="kw">let</span> <span class="ident">secondarg</span> <span class="op">=</span> <span class="ident">args</span>.<span class="ident">get</span>(<span class="number">2</span>).<span class="ident">map</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span>.<span class="ident">as_str</span>());
+
+    <span class="kw">match</span> (<span class="ident">firstarg</span>, <span class="ident">secondarg</span>) {
+        (<span class="prelude-val">None</span>, <span class="kw">_</span>) <span class="op">|</span> (<span class="prelude-val">Some</span>(<span class="string">&quot;help&quot;</span>), <span class="kw">_</span>) <span class="op">|</span> (<span class="prelude-val">Some</span>(<span class="string">&quot;--help&quot;</span>), <span class="kw">_</span>) =&gt; {
+            <span class="kw">return</span> <span class="ident">print_help</span>(<span class="bool-val">true</span>);
+        }
+        (<span class="prelude-val">Some</span>(<span class="string">&quot;-h&quot;</span>), <span class="kw">_</span>) =&gt; {
+            <span class="kw">return</span> <span class="ident">print_help</span>(<span class="bool-val">false</span>);
+        }
+        (<span class="prelude-val">Some</span>(<span class="string">&quot;-vV&quot;</span>), <span class="kw">_</span>)
+        <span class="op">|</span> (<span class="prelude-val">Some</span>(<span class="string">&quot;version&quot;</span>), <span class="prelude-val">Some</span>(<span class="string">&quot;--verbose&quot;</span>))
+        <span class="op">|</span> (<span class="prelude-val">Some</span>(<span class="string">&quot;--version&quot;</span>), <span class="prelude-val">Some</span>(<span class="string">&quot;--verbose&quot;</span>)) =&gt; {
+            <span class="kw">return</span> <span class="ident">print_version</span>(<span class="bool-val">true</span>);
+        }
+
+        (<span class="prelude-val">Some</span>(<span class="string">&quot;-v&quot;</span>), <span class="kw">_</span>) <span class="op">|</span> (<span class="prelude-val">Some</span>(<span class="string">&quot;-V&quot;</span>), <span class="kw">_</span>) <span class="op">|</span> (<span class="prelude-val">Some</span>(<span class="string">&quot;version&quot;</span>), <span class="kw">_</span>) <span class="op">|</span> (<span class="prelude-val">Some</span>(<span class="string">&quot;--version&quot;</span>), <span class="kw">_</span>) =&gt; {
+            <span class="kw">return</span> <span class="ident">print_version</span>(<span class="bool-val">false</span>);
+        }
+        <span class="kw">_</span> =&gt; {}
+    }
+
     <span class="kw">let</span> <span class="ident">command</span> <span class="op">=</span> <span class="ident">args</span>.<span class="ident">get</span>(<span class="number">1</span>);
     <span class="kw">let</span> <span class="ident">options</span> <span class="op">=</span> <span class="kw">if</span> <span class="macro">cfg!</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;linux&quot;</span>) <span class="op">&amp;&amp;</span> <span class="ident">binpath</span>.<span class="ident">ends_with</span>(<span class="string">&quot;wasmer-binfmt-interpreter&quot;</span>) {
         <span class="ident">WasmerCLIOptions::Run</span>(<span class="ident">Run::from_binfmt_args</span>())
     } <span class="kw">else</span> {
         <span class="kw">match</span> <span class="ident">command</span>.<span class="ident">unwrap_or</span>(<span class="kw-2">&amp;</span><span class="string">&quot;&quot;</span>.<span class="ident">to_string</span>()).<span class="ident">as_ref</span>() {
-            <span class="string">&quot;cache&quot;</span> <span class="op">|</span> <span class="string">&quot;compile&quot;</span> <span class="op">|</span> <span class="string">&quot;config&quot;</span> <span class="op">|</span> <span class="string">&quot;create-exe&quot;</span> <span class="op">|</span> <span class="string">&quot;help&quot;</span> <span class="op">|</span> <span class="string">&quot;inspect&quot;</span> <span class="op">|</span> <span class="string">&quot;run&quot;</span>
-            <span class="op">|</span> <span class="string">&quot;self-update&quot;</span> <span class="op">|</span> <span class="string">&quot;validate&quot;</span> <span class="op">|</span> <span class="string">&quot;wast&quot;</span> <span class="op">|</span> <span class="string">&quot;binfmt&quot;</span> =&gt; <span class="ident">WasmerCLIOptions::parse</span>(),
+            <span class="string">&quot;add&quot;</span> <span class="op">|</span> <span class="string">&quot;cache&quot;</span> <span class="op">|</span> <span class="string">&quot;compile&quot;</span> <span class="op">|</span> <span class="string">&quot;config&quot;</span> <span class="op">|</span> <span class="string">&quot;create-obj&quot;</span> <span class="op">|</span> <span class="string">&quot;create-exe&quot;</span> <span class="op">|</span> <span class="string">&quot;help&quot;</span>
+            <span class="op">|</span> <span class="string">&quot;gen-c-header&quot;</span> <span class="op">|</span> <span class="string">&quot;inspect&quot;</span> <span class="op">|</span> <span class="string">&quot;init&quot;</span> <span class="op">|</span> <span class="string">&quot;run&quot;</span> <span class="op">|</span> <span class="string">&quot;self-update&quot;</span> <span class="op">|</span> <span class="string">&quot;validate&quot;</span> <span class="op">|</span> <span class="string">&quot;wast&quot;</span>
+            <span class="op">|</span> <span class="string">&quot;binfmt&quot;</span> <span class="op">|</span> <span class="string">&quot;list&quot;</span> <span class="op">|</span> <span class="string">&quot;login&quot;</span> <span class="op">|</span> <span class="string">&quot;publish&quot;</span> =&gt; <span class="ident">WasmerCLIOptions::parse</span>(),
             <span class="kw">_</span> =&gt; {
                 <span class="ident">WasmerCLIOptions::try_parse_from</span>(<span class="ident">args</span>.<span class="ident">iter</span>()).<span class="ident">unwrap_or_else</span>(<span class="op">|</span><span class="ident">e</span><span class="op">|</span> {
                     <span class="kw">match</span> <span class="ident">e</span>.<span class="ident">kind</span>() {
@@ -419,8 +565,49 @@
         }
     };
 
-    <span class="ident">PrettyError::report</span>(<span class="ident">options</span>.<span class="ident">execute</span>());
+    <span class="ident">options</span>.<span class="ident">execute</span>()
+}
+
+<span class="kw">fn</span> <span class="ident">print_help</span>(<span class="ident">verbose</span>: <span class="ident">bool</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">anyhow::Error</span><span class="op">&gt;</span> {
+    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">cmd</span> <span class="op">=</span> <span class="ident">WasmerCLIOptions::command</span>();
+    <span class="kw">if</span> <span class="ident">verbose</span> {
+        <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> <span class="ident">cmd</span>.<span class="ident">print_long_help</span>();
+    } <span class="kw">else</span> {
+        <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> <span class="ident">cmd</span>.<span class="ident">print_help</span>();
+    }
+    <span class="prelude-val">Ok</span>(())
+}
+
+<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">unused_mut</span>, <span class="ident">clippy::vec_init_then_push</span>)]</span>
+<span class="kw">fn</span> <span class="ident">print_version</span>(<span class="ident">verbose</span>: <span class="ident">bool</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">anyhow::Error</span><span class="op">&gt;</span> {
+    <span class="kw">if</span> <span class="op">!</span><span class="ident">verbose</span> {
+        <span class="macro">println!</span>(<span class="string">&quot;wasmer {}&quot;</span>, <span class="macro">env!</span>(<span class="string">&quot;CARGO_PKG_VERSION&quot;</span>));
+    } <span class="kw">else</span> {
+        <span class="macro">println!</span>(
+            <span class="string">&quot;wasmer {} ({} {})&quot;</span>,
+            <span class="macro">env!</span>(<span class="string">&quot;CARGO_PKG_VERSION&quot;</span>),
+            <span class="macro">env!</span>(<span class="string">&quot;WASMER_BUILD_GIT_HASH_SHORT&quot;</span>),
+            <span class="macro">env!</span>(<span class="string">&quot;WASMER_BUILD_DATE&quot;</span>)
+        );
+        <span class="macro">println!</span>(<span class="string">&quot;binary: {}&quot;</span>, <span class="macro">env!</span>(<span class="string">&quot;CARGO_PKG_NAME&quot;</span>));
+        <span class="macro">println!</span>(<span class="string">&quot;commit-hash: {}&quot;</span>, <span class="macro">env!</span>(<span class="string">&quot;WASMER_BUILD_GIT_HASH&quot;</span>));
+        <span class="macro">println!</span>(<span class="string">&quot;commit-date: {}&quot;</span>, <span class="macro">env!</span>(<span class="string">&quot;WASMER_BUILD_DATE&quot;</span>));
+        <span class="macro">println!</span>(<span class="string">&quot;host: {}&quot;</span>, <span class="ident">target_lexicon::HOST</span>);
+        <span class="macro">println!</span>(<span class="string">&quot;compiler: {}&quot;</span>, {
+            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">s</span> <span class="op">=</span> <span class="ident">Vec</span>::<span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span><span class="ident">::new</span>();
+
+            <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;singlepass&quot;</span>)]</span>
+            <span class="ident">s</span>.<span class="ident">push</span>(<span class="string">&quot;singlepass&quot;</span>);
+            <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;cranelift&quot;</span>)]</span>
+            <span class="ident">s</span>.<span class="ident">push</span>(<span class="string">&quot;cranelift&quot;</span>);
+            <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;llvm&quot;</span>)]</span>
+            <span class="ident">s</span>.<span class="ident">push</span>(<span class="string">&quot;llvm&quot;</span>);
+
+            <span class="ident">s</span>.<span class="ident">join</span>(<span class="string">&quot;,&quot;</span>)
+        });
+    }
+    <span class="prelude-val">Ok</span>(())
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="wasmer_cli" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.61.0 (fe5b13d68 2022-05-18)" ></div>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="wasmer_cli" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.63.0 (4b91a6ea7 2022-08-08)" ></div>
 </body></html>
